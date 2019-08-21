@@ -256,7 +256,7 @@ public class MSTTSSpeech
         this.volume = volume;
     }
     /**
-     * @return the rate
+     * @return the rateInt
      */
     public int getRate()
     {
@@ -264,14 +264,14 @@ public class MSTTSSpeech
     }
     /**
      * @param rate
-     * the rate to set
+     * the rateInt to set
      */
     public void setRate(int rate)
     {
         this.rate = rate;
     }
     /**
-     * @return the voice
+     * @return the voiceInt
      */
     public int getVoice()
     {
@@ -279,14 +279,14 @@ public class MSTTSSpeech
     }
     /**
      * @param voice
-     * the voice to set
+     * the voiceInt to set
      */
     public void setVoice(int voice)
     {
         this.voice = voice;
     }
     /**
-     * @return the audio
+     * @return the audioInt
      */
     public int getAudio()
     {
@@ -294,7 +294,7 @@ public class MSTTSSpeech
     }
     /**
      * @param audio
-     * the audio to set
+     * the audioInt to set
      */
     public void setAudio(int audio)
     {
@@ -418,7 +418,7 @@ public class MSTTSSpeech
         MSTTSSpeech speech=new MSTTSSpeech();
         String text="这是我的测试,物理内存至少需要512MB，建议2GB以上,虚拟内存是主机物理内存的两倍，不要设到系统盘,硬盘空闲空间大于4.77GB.";
         speech.setFormatType(6);
-        // speech.setRate(-1);
+        // speech.setRateInt(-1);
         speech.saveToWav(text,"D:/test.wav");
         //speech.speak(text);
         SoundUtil.wavToPcm("D:/test.wav");

@@ -1,12 +1,27 @@
+import com.eks.utils.FileUtils;
 import com.eks.utils.JacobUtils;
+import com.eks.utils.MicrosoftTextToSpeechUtils;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
+import org.junit.Before;
+import org.junit.Test;
 
 public class JacobUtilsTest {
-    public static void main(String[] args) {
+    private static final String voiceFilePathString = FileUtils.generatePathBaseProjectPath("extra/voice/voice.wav");
+    @Before
+    public void before(){
         JacobUtils.addJavaLibraryPath();
+    }
+    @Test
+    public void test1(){
         JacobUtilsTest.textToSpeech("各位父老乡亲，大家好");
+    }
+    @Test
+    public void test2(){
+        String contentString = "这是我的测试,物理内存至少需要512MB，建议2GB以上,虚拟内存是主机物理内存的两倍，不要设到系统盘,硬盘空闲空间大于4.77GB.";
+        MicrosoftTextToSpeechUtils.speak(contentString,22,100,0);
+        MicrosoftTextToSpeechUtils.saveToWav(contentString,voiceFilePathString);
     }
 
     /**

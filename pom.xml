@@ -30,10 +30,12 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!--免去书写get、set等方法-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <version>1.16.18</version>
+            <scope>provided</scope><!--依赖范围。在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。[compile:默认范围,用于编译][provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath][runtime:在执行时需要使用][test:用于test任务时使用][system:需要外在提供相应的元素。通过systemPath来取得][systemPath:仅用于范围为system。提供相应的路径][optional:当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用-->
         </dependency>
     </dependencies>
 </project>
