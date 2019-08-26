@@ -79,6 +79,10 @@ public class MicrosoftTextToSpeechUtils {
         }
         return audioOutputNameStringList;
     }
+    public static void speakBaseProjectPath(String relativePathString) throws Exception {
+        String contentString = FileUtils.getContentStringBaseProjectPath(relativePathString);
+        speak(contentString,formatTypeInteger,volumeInteger,rateInteger);
+    }
     //播放语音
     public static void speak(String contentString,Integer formatTypeInteger,Integer volumeInteger,Integer rateInteger){
         Dispatch.put(sapiSpAudioFormatDispatch,"Type",new Variant(formatTypeInteger));
@@ -90,6 +94,12 @@ public class MicrosoftTextToSpeechUtils {
         Dispatch.putRef(voiceDispatch,"AudioOutputStream", spMMAudioOutDispatch);
         //开始朗读
         Dispatch.call(voiceDispatch,"Speak",new Variant(contentString));
+    }
+    public static void saveToWav(String relativePathString) throws Exception {
+        String contentString = FileUtils.getContentStringBaseProjectPath(relativePathString);
+        String[] relativePathStringArray = relativePathString.split("\\.");
+        relativePathString = relativePathString.substring(0,relativePathString.length() - relativePathStringArray[relativePathStringArray.length - 1].length() - 1) + ".wav";
+        MicrosoftTextToSpeechUtils.saveToWav(contentString,FileUtils.generatePathBaseProjectPath(relativePathString));
     }
     //将文字转换成音频信号，然后输出到.WAV文件
     public static void saveToWav(String contentString,String voiceFilePathString){

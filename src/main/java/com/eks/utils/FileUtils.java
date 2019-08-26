@@ -31,6 +31,9 @@ public class FileUtils {
         }
         return stringList;
     }
+    public static String getContentStringBaseProjectPath(String relativePathString) throws Exception {
+        return convertFileToContentString(generatePathBaseProjectPath(relativePathString));
+    }
     public static String convertFileToContentString(String filePathString) throws Exception {
         List<String> everyLineListFromFile = convertFileToList(filePathString);
         StringBuilder stringBuilder = new StringBuilder();

@@ -15,7 +15,7 @@ public class JacobUtilsTest {
     }
     @Test
     public void test1(){
-        JacobUtilsTest.textToSpeech("各位父老乡亲，大家好");
+        JacobUtilsTest.textToSpeech("各位父老乡亲,大家好!Are you ok?");
     }
     @Test
     public void test2(){
@@ -23,10 +23,28 @@ public class JacobUtilsTest {
         MicrosoftTextToSpeechUtils.speak(contentString,22,100,0);
         MicrosoftTextToSpeechUtils.saveToWav(contentString,voiceFilePathString);
     }
+    @Test
+    public void test3() throws Exception {
+        String relativePathString = "extra/voice/20190826_1840/zh.txt";
+        MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
+        MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
+    }
+    @Test
+    public void test4() throws Exception {
+        String relativePathString = "extra/voice/20190826_1840/en.txt";
+        MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
+        MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
+    }
+    @Test
+    public void test5() throws Exception {
+        String relativePathString = "extra/voice/20190826_1840/zh_en.txt";
+        MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
+        MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
+    }
 
     /**
      * 语音转文字并播放
-     * 
+     *
      */
     public static void textToSpeech(String text) {
         ActiveXComponent ax = null;
@@ -55,7 +73,7 @@ public class JacobUtilsTest {
             // 设置文件输出流格式
             Dispatch.putRef(spFileStream, "Format", spAudioFormat);
             // 调用输出 文件流打开方法，创建一个.wav文件
-            Dispatch.call(spFileStream, "Open", new Variant("./text.wav"), new Variant(3), new Variant(true));
+            Dispatch.call(spFileStream, "Open", new Variant(voiceFilePathString), new Variant(3), new Variant(true));
             // 设置声音对象的音频输出流为输出文件对象
             Dispatch.putRef(spVoice, "AudioOutputStream", spFileStream);
             // 设置音量 0到100
