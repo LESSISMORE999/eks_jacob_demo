@@ -21,12 +21,12 @@ public class MicrosoftTextToSpeechUtils {
     private static Dispatch spMMAudioOutDispatch = new ActiveXComponent("Sapi.SpMMAudioOut").getObject();//音频输出对象
     private static Dispatch sapiSpAudioFormatDispatch = new ActiveXComponent("Sapi.SpAudioFormat").getObject();//音频格式对象
 
-    private static Integer rateInteger = 0;// 频率: -10到10
-    private static Integer volumeInteger = 100;// 声音: 1到100
-    private static Integer formatTypeInteger = 22;// 音频的输出格式，默认为：SAFT22kHz16BitMono
+    private static Integer rateInteger = 0;//频率: -10到10
+    private static Integer volumeInteger = 100;//声音: 1到100
+    private static Integer formatTypeInteger = 22;//音频的输出格式，默认为：SAFT22kHz16BitMono
 
-    private static Integer voiceInteger = 0;// 语音库序号
-    private static Integer audioInteger = 0;// 输出设备序号
+    private static Integer voiceInteger = 0;//语音库序号
+    private static Integer audioInteger = 0;//输出设备序号
     //暂停播放语音
     public static void pause(Dispatch voiceDispatch){
         Dispatch.call(voiceDispatch,"Pause");
@@ -87,8 +87,8 @@ public class MicrosoftTextToSpeechUtils {
     public static void speak(String contentString,Integer formatTypeInteger,Integer volumeInteger,Integer rateInteger){
         Dispatch.put(sapiSpAudioFormatDispatch,"Type",new Variant(formatTypeInteger));
         //调整音量和读的速度
-        Dispatch.put(voiceDispatch,"Volume",new Variant(volumeInteger));// 设置音量
-        Dispatch.put(voiceDispatch,"Rate",new Variant(rateInteger));// 设置速率
+        Dispatch.put(voiceDispatch,"Volume",new Variant(volumeInteger));//设置音量
+        Dispatch.put(voiceDispatch,"Rate",new Variant(rateInteger));//设置速率
         Dispatch.putRef(spMMAudioOutDispatch,"Format", sapiSpAudioFormatDispatch);
         Dispatch.put(voiceDispatch,"AllowAudioOutputFormatChangesOnNextSet",new Variant(false));
         Dispatch.putRef(voiceDispatch,"AudioOutputStream", spMMAudioOutDispatch);

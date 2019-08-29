@@ -25,23 +25,10 @@ public class JacobUtilsTest {
     }
     @Test
     public void test3() throws Exception {
-        String relativePathString = "extra/voice/20190826_1840/zh.txt";
+        String relativePathString = "extra/voice/20190829_2123_患难见真情/zh_en.txt";
         MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
         MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
     }
-    @Test
-    public void test4() throws Exception {
-        String relativePathString = "extra/voice/20190826_1840/en.txt";
-        MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
-        MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
-    }
-    @Test
-    public void test5() throws Exception {
-        String relativePathString = "extra/voice/20190826_1840/zh_en.txt";
-        MicrosoftTextToSpeechUtils.speakBaseProjectPath(relativePathString);
-        MicrosoftTextToSpeechUtils.saveToWav(relativePathString);
-    }
-
     /**
      * 语音转文字并播放
      *
